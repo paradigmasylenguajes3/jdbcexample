@@ -21,8 +21,8 @@ public class Conexion {
     //static final String DB_URL = "jdbc:mysql://localhost:3306/sales_system";
     // static final String JDBC_DRIVER ="com.mysql.jdbc.Driver";
     //  Database credentials
-   static final String USER = "postgres";
-   static final String PASS = "123456";
+   static final String USER = "userDB";
+   static final String PASS = "passDB";
    
    private static Connection conn = null;
    
