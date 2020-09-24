@@ -6,7 +6,7 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
-
+.env
 # Class Files #
 *.class
 

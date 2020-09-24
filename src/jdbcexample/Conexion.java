@@ -5,9 +5,11 @@
  */
 package jdbcexample;
 
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 
 /**
@@ -15,21 +17,28 @@ import java.sql.SQLException;
  * @author Hugo Chanampe
  */
 public class Conexion {
-    
+
+
+
    static final String JDBC_DRIVER = "org.postgresql.Driver";  
-   static final String DB_URL = "jdbc:postgresql://127.0.0.1:5432/instituto_capacitacion";
-    //static final String DB_URL = "jdbc:mysql://localhost:3306/sales_system";
-    // static final String JDBC_DRIVER ="com.mysql.jdbc.Driver";
-    //  Database credentials
-   static final String USER = "userDB";
-   static final String PASS = "passDB";
+   static final String DB_URL = "jdbc:postgresql://localhost:5432/example";
+   //static final String DB_URL = "jdbc:mysql://localhost:3306/sales_system";
+   // static final String JDBC_DRIVER ="com.mysql.jdbc.Driver";
+   //  Database credentials
+
    
    private static Connection conn = null;
-   
-     
+
+
+
    public static Connection obtenerConexion() throws SQLException, ClassNotFoundException {
       if (conn == null) {
          try {
+            //Set Values from  .env configuration file
+            Properties enviromentsVaribles = Conexion.getProperties();
+            final String  USER = (String) enviromentsVaribles.get("POSTGRES_USER");
+            final String  PASS = (String) enviromentsVaribles.get("POSTGRES_PASSWORD");
+
             Class.forName(JDBC_DRIVER);
              //STEP 3: Open a connection
       
@@ -38,6 +47,8 @@ public class Conexion {
             throw new SQLException(ex);
          } catch (ClassNotFoundException ex) {
             throw new ClassCastException(ex.getMessage());
+         } catch (Exception e) {
+            e.printStackTrace();
          }
       }
       return conn;
@@ -47,6 +58,13 @@ public class Conexion {
       if (conn != null) {
          conn.close();
       }
+   }
+
+   public static Properties  getProperties() throws Exception {
+      FileReader reader=new FileReader(".env");
+      Properties p = new Properties();
+      p.load(reader);
+      return p;
    }
    
  

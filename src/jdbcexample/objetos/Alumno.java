@@ -10,7 +10,8 @@ package jdbcexample.objetos;
  * @author Hugo Chanampe
  */
 public class Alumno {
-    
+
+
     private Integer idAlumnos;
     
     private String sexo;
@@ -18,6 +19,20 @@ public class Alumno {
     private String apellido;
     
     private String nombre;
+
+    public Alumno(String sexo, String apellido, String nombre) {
+        this.sexo = sexo;
+        this.apellido = apellido;
+        this.nombre = nombre;
+    }
+
+    public Alumno(String sexo, String nombre, String apellido, Integer id) {
+        this.sexo = sexo;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.idAlumnos = id;
+
+    }
 
     public Integer getIdAlumnos() {
         return idAlumnos;
@@ -50,6 +65,14 @@ public class Alumno {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Alumno{" +
+                "idAlumnos=" + idAlumnos +
+                ", sexo='" + sexo + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", nombre='" + nombre + '\'' +
+                '}';
+    }
 }
