@@ -4,12 +4,13 @@ build/
 nbbuild/
 dist/
 nbdist/
+postgres-data/
 nbactions.xml
 nb-configuration.xml
 .env
 # Class Files #
 *.class
-
+.idea/
 # Package Files #
 *.jar
 *.war
