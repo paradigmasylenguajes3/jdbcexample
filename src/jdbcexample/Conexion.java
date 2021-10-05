@@ -18,9 +18,7 @@ import java.util.Properties;
  */
 public class Conexion {
 
-
-
-   static final String JDBC_DRIVER = "org.postgresql.Driver";  
+   static final String JDBC_DRIVER = "org.postgresql.Driver";
    static final String DB_URL = "jdbc:postgresql://localhost:5432/example";
    //static final String DB_URL = "jdbc:mysql://localhost:3306/sales_system";
    // static final String JDBC_DRIVER ="com.mysql.jdbc.Driver";
@@ -35,16 +33,17 @@ public class Conexion {
       if (conn == null) {
          try {
             //Set Values from  .env configuration file
-            Properties enviromentsVaribles = Conexion.getProperties();
-            final String  USER = (String) enviromentsVaribles.get("POSTGRES_USER");
-            final String  PASS = (String) enviromentsVaribles.get("POSTGRES_PASSWORD");
+            //Properties enviromentsVariables = Conexion.getProperties();
+            final String  USER_DB = "userdb";//(String) enviromentsVariables.get("POSTGRES_USER");
+            final String  PASS_DB = "passdb";//(String) enviromentsVariables.get("POSTGRES_PASSWORD");
+            final String   DB_NAME = "namedatabase";//(String) enviromentsVariables.get("POSTGRES_DB");
 
+            // Set Driver to Database
             Class.forName(JDBC_DRIVER);
              //STEP 3: Open a connection
-      
-            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            conn = DriverManager.getConnection(DB_URL, USER_DB, PASS_DB);
          } catch (SQLException ex) {
-            throw new SQLException(ex);
+            System.out.println("fallo intentando ingresar credenciales");
          } catch (ClassNotFoundException ex) {
             throw new ClassCastException(ex.getMessage());
          } catch (Exception e) {
