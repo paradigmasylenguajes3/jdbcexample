@@ -61,13 +61,14 @@ public class AlumnoController implements ICrud<Alumno> {
             ResultSet rs = statement.executeQuery(sql);
             
             while(rs.next()){
-                String apellido = rs.getString("apellido");
-                String nombre = rs.getString("nombre");
-                String sexo = rs.getString("sexo");
-           
-                System.out.println("Apellido: "+apellido+" Nombre: "+nombre+" Sexo: "+sexo);
+                Alumno alumno = new Alumno();
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setSexo(rs.getString("sexo"));
+                alumno.setIdAlumnos(rs.getInt("id"));
+                return Optional.of(alumno);
             }
-            
+
         }catch(SQLException | ClassNotFoundException e){
             System.out.println("Fallo al intentar obtener los objetos de la base de datos");
          }
