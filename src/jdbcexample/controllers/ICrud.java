@@ -5,8 +5,8 @@ import java.util.Optional;
 
 public interface ICrud<T> {
     public boolean insertObject(T entity);
-    public boolean deleteObject(T entity);
+    public boolean deleteObject(int id);
     public Optional<T> getObject(int id);
-    public boolean modifiedObject(T entity);
+    public boolean modifiedObject(String sexo, String apellido, String nombre, int id);
     public List<T> getAllObjects();
 }

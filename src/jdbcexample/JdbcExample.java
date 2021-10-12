@@ -16,9 +16,15 @@ import java.sql.*;
 public class JdbcExample {
 
    
-   public static void main(String[] args) {
-       Alumno alumno = new Alumno("masculilno", "perez", "juan");
+   public static void main(String[] args) throws SQLException, ClassNotFoundException {
+       Alumno alumno = new Alumno("Masculino", "Ruiz", "Carlos");
        AlumnoController alumnoController= new AlumnoController();
+       
+       //alumnoController.insertObject(alumno);
+       //alumnoController.getObject(2);
+       //alumnoController.deleteObject(2);
+       //alumnoController.modifiedObject("Femenino", "Cortez", "Maria", 1);
+
    }
 }  
   
