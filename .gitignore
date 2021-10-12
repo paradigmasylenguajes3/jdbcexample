@@ -10,7 +10,7 @@ nb-configuration.xml
 .env
 # Class Files #
 *.class
-.idea/
+
 # Package Files #
 *.jar
 *.war

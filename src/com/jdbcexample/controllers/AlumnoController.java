@@ -1,7 +1,7 @@
-package jdbcexample.controllers;
+package com.jdbcexample.controllers;
 
-import jdbcexample.Conexion;
-import jdbcexample.objetos.Alumno;
+import com.jdbcexample.Conexion;
+import com.jdbcexample.objetos.Alumno;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

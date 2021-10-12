@@ -1,4 +1,4 @@
-package jdbcexample.controllers;
+package com.jdbcexample.controllers;
 
 import java.util.List;
 import java.util.Optional;
