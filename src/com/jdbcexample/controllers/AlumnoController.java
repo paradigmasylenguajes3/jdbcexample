@@ -75,15 +75,16 @@ public class AlumnoController implements ICrud<Alumno> {
     }
 
     @Override
-    public boolean modifiedObject(String sexo, String apellido, String nombre, int id) {
-        String sql = "UPDATE public.alumnos SET apellido='"+apellido+"', nombre='"+nombre+"', sexo='"+sexo+"' WHERE id="+id+";";
-                
+    public boolean modifiedObject(Alumno entity) {
+        String sql = "UPDATE public.alumnos SET apellido='"+entity.getApellido()+"', nombre='"+entity.getNombre()+"', sexo='"+entity.getSexo()+"' WHERE id="+entity.getIdAlumnos()+";";
+
         try{
             Connection conn = Conexion.obtenerConexion();
-            Statement statement = conn.createStatement();            
-            statement.executeQuery(sql);
+            Statement statement = conn.createStatement();
+            statement.execute(sql);
             conn.close();
-            
+            return true;
+
         }catch(SQLException | ClassNotFoundException e){
             System.out.println(e);
         }

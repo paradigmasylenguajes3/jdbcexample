@@ -15,8 +15,11 @@ public class JdbcExample {
 
    
    public static void main(String[] args) {
-       Alumno alumno = new Alumno("masculilno", "perez", "juan");
+       Alumno alumno = new Alumno("masculilno", "varas", "enzo");
+       alumno.setIdAlumnos(3);
+
        AlumnoController alumnoController= new AlumnoController();
+       alumnoController.modifiedObject(alumno);
    }
 }  
   

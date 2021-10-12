@@ -33,10 +33,10 @@ public class Conexion {
       if (conn == null) {
          try {
             //Set Values from  .env configuration file
-            //Properties enviromentsVariables = Conexion.getProperties();
-            final String  USER_DB = "userdb";//(String) enviromentsVariables.get("POSTGRES_USER");
-            final String  PASS_DB = "passdb";//(String) enviromentsVariables.get("POSTGRES_PASSWORD");
-            final String   DB_NAME = "namedatabase";//(String) enviromentsVariables.get("POSTGRES_DB");
+            Properties enviromentsVariables = Conexion.getProperties();
+            final String  USER_DB = (String) enviromentsVariables.get("POSTGRES_USER");
+            final String  PASS_DB = (String) enviromentsVariables.get("POSTGRES_PASSWORD");
+            final String   DB_NAME = (String) enviromentsVariables.get("POSTGRES_DB");
 
             // Set Driver to Database
             Class.forName(JDBC_DRIVER);
