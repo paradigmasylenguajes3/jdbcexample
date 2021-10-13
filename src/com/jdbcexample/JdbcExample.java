@@ -7,6 +7,7 @@ package com.jdbcexample;
 import com.jdbcexample.controllers.AlumnoController;
 import com.jdbcexample.objetos.Alumno;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -20,9 +21,12 @@ public class JdbcExample {
 //       Alumno alumno = new Alumno("masculilno", "varas", "enzo");
 //       alumno.setIdAlumnos(3);
 
+//       AlumnoController alumnoController= new AlumnoController();
+//       Optional<Alumno> alumno = alumnoController.getObject(5);
+//       System.out.printf(String.valueOf(alumno));
        AlumnoController alumnoController= new AlumnoController();
-       Optional<Alumno> alumno = alumnoController.getObject(5);
-       System.out.printf(String.valueOf(alumno));
+       List<Alumno> listadoAlumnos = alumnoController.getAllObjects();
+
    }
 }  
   

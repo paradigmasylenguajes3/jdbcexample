@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,6 +95,27 @@ public class AlumnoController implements ICrud<Alumno> {
 
     @Override
     public List<Alumno> getAllObjects() {
+        String sql = "SELECT * FROM public.alumnos;";
+        try{
+            Connection conn = Conexion.obtenerConexion();
+            Statement statement = conn.createStatement();
+
+            ResultSet rs = statement.executeQuery(sql);
+            List<Alumno> listadoAlumnos = new ArrayList<>();
+            while(rs.next()){
+                Alumno alumno = new Alumno();
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setSexo(rs.getString("sexo"));
+                alumno.setIdAlumnos(rs.getInt("id"));
+                listadoAlumnos.add(alumno);
+            }
+            return listadoAlumnos;
+
+        }catch(SQLException | ClassNotFoundException e){
+            System.out.println("Fallo al intentar obtener los objetos de la base de datos");
+        }
         return null;
     }
-}
+    }
+
