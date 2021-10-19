@@ -6,29 +6,24 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class AlumnoTest {
     private Alumno alumno;
-    @BeforeEach
-    void init(){
 
-
-    }
     @Test
     public void testAlumnoCreated(){
         this.alumno = new Alumno();
         this.alumno.setNombre("Juan");
         this.alumno.setSexo("Masculino");
-        Assertions.assertEquals(this.alumno.getNombre(), "Juan");
-        Assertions.assertEquals(this.alumno.getSexo(), "Masculino");
+        Assertions.assertEquals("Juan", this.alumno.getNombre());
+        Assertions.assertEquals("Masculino", this.alumno.getSexo());
 
     }
 
     @Test
-    public void testAlumnoDelete(){
+    public void testAlumnoCheckInstance(){
         Alumno alumno = new Alumno();
-        AlumnoController alumnoController = new AlumnoController();
-        assert(alumno instanceof Alumno);
+        Assertions.assertTrue(alumno instanceof Alumno);
     }
 }
